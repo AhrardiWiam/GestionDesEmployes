@@ -33,6 +33,10 @@ Le projet est organisé de la manière suivante :
   - Affichage des employés dans l'ordre hiérarchique pour une vue structurée de la gestion de l'entreprise.
 
 
+## Relations entre les classes
+![image](https://github.com/user-attachments/assets/6c299c9a-7da8-4212-8302-1cab3e542715)
+
+
 
 ## Cloner le Projet
 Pour cloner ce projet sur votre machine locale, suivez les étapes ci-dessous :
@@ -44,5 +48,9 @@ Pour cloner ce projet sur votre machine locale, suivez les étapes ci-dessous :
    ```bash
    git clone https://github.com/votre_nom_utilisateur/ScriptsDesDeveloppeurs.git
 
+## Démonstration du Travail 
+
+
+https://github.com/user-attachments/assets/b725e578-9cc8-40c2-a5fd-d160faaa42f9
 
 
