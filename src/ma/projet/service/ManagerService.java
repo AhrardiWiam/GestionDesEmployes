@@ -102,7 +102,8 @@ public class ManagerService implements IDao<Manager> {
             PreparedStatement st = Connexion.getCn().prepareStatement(req);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                managers.add(new Manager(rs.getInt(1), rs.getString(2), rs.getDouble(3), ms.getById(rs.getInt(4))));
+                managers.add(new Manager(rs.getInt(1), rs.getString(2),
+                        rs.getDouble(3), ms.getById(rs.getInt(4))));
             }
             
         } catch (SQLException e) {
@@ -130,27 +131,32 @@ public class ManagerService implements IDao<Manager> {
         public void entrepriseHierar() {
         ManagerService ms= new ManagerService();
         try {
-            System.out.println("Le directeur: "+ms.getDirecteur().getNom()+" a un salaire de: "+ms.getDirecteur().getSalaire());
+            System.out.println(" -Le directeur: "+ms.getDirecteur().getNom()+" a un salaire de:"
+                    + " "+ms.getDirecteur().getSalaire());
             String req = "select *  from developpeur where manager_id=? ";
             PreparedStatement st = Connexion.getCn().prepareStatement(req);
             st.setInt(1, ms.getDirecteur().getId());
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                System.out.println("Le developpeur:" + rs.getString(2) + " a un salire de :" + rs.getDouble(3));
+                System.out.println("   =>Le developpeur:" + rs.getString(2) + " a un salire de :"
+                        + rs.getDouble(3));
             }
             req = "SELECT * FROM manager WHERE manager_id IS NOT NULL";
             st = Connexion.getCn().prepareStatement(req);
              rs = st.executeQuery();
             while (rs.next()) {
-            System.out.println("Le manager: "+rs.getString(2) +" a un salaire de: "+rs.getDouble(3));
-            }
-            req = "select *  from developpeur where manager_id<>? ";
-            st = Connexion.getCn().prepareStatement(req);
-            st.setInt(1, ms.getDirecteur().getId());
-            rs = st.executeQuery();
-            while (rs.next()) {
-            System.out.println("Le developpeur:" + rs.getString(2) + " a un salire de :" + rs.getDouble(3));
-            }
+            int id=rs.getInt(1);//c'est l'id du manager
+            System.out.println("   =>Le manager: "+rs.getString(2) +" a un salaire de: "
+                    + ""+rs.getDouble(3));
+            String reqDev = "SELECT * FROM developpeur WHERE manager_id=?";
+            PreparedStatement stDev = Connexion.getCn().prepareStatement(reqDev);
+            stDev.setInt(1, id);
+            ResultSet rsDev = stDev.executeQuery();
+            while (rsDev.next()) {
+            System.out.println("     ==>Le developpeur:" + rsDev.getString(2) + " a un salire de "
+                    + ":" + rsDev.getDouble(3));
+            }}
+            
         } catch (SQLException e) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, e);
             
