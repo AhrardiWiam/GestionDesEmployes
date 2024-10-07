@@ -43,6 +43,6 @@ Pour cloner ce projet sur votre machine locale, suivez les étapes ci-dessous :
 
    ```bash
    git clone https://github.com/votre_nom_utilisateur/ScriptsDesDeveloppeurs.git
-## Démonstration de l'application
+
 
 
